@@ -8,9 +8,9 @@
 #include "tbitfield.h"
 
 TBitField::TBitField(int len) {
-
+	
 	TELEM bits;
-	if (len <= 0) {
+	if (len<=0) {
 		throw invalid_argument("Len<0...");
 	}
 	if (deg == 0)
@@ -26,8 +26,8 @@ TBitField::TBitField(int len) {
 	BitLen = len;
 	pMem = new TELEM[MemLen];
 	if (pMem != NULL)
-		for (int i = 0; i < MemLen; i++)
-			pMem[i] = 0;
+	for (int i = 0; i < MemLen; i++)	
+		pMem[i] = 0;
 }
 
 TBitField::TBitField(const TBitField &bf) // конструктор копирования
@@ -35,9 +35,9 @@ TBitField::TBitField(const TBitField &bf) // конструктор копиро
 	BitLen = bf.BitLen;
 	MemLen = bf.MemLen;
 	pMem = new TELEM[MemLen];
-	if (pMem != NULL)
-		for (int i = 0; i < MemLen; i++)
-			pMem[i] = bf.pMem[i];
+	if (pMem != NULL)	
+	for (int i = 0; i < MemLen; i++)	
+		pMem[i] = bf.pMem[i];
 }
 
 TBitField::~TBitField() {
@@ -72,7 +72,7 @@ void TBitField::SetBit(const int n) // установить бит
 	if (n<0) {
 		throw invalid_argument("Bit < 0...");
 	}
-	if (n >= BitLen) {
+	if (n>=BitLen) {
 		throw invalid_argument("BitLen < n...");
 	}
 	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] |= GetMemMask(n);
@@ -122,8 +122,8 @@ int TBitField::operator==(const TBitField &bf) const // сравнение
 	int result = 1;
 	if (BitLen != bf.BitLen) result = 0;
 	else
-		for (int i = 0; i < MemLen; i++)
-			if (pMem[i] != bf.pMem[i]) { result = 0; break; }
+	for (int i = 0; i < MemLen; i++)
+	if (pMem[i] != bf.pMem[i]) { result = 0; break; }
 	return result;
 }
 
@@ -184,22 +184,22 @@ TBitField TBitField::operator~(void) // отрицание
 	int len = BitLen;
 	TBitField result(len);
 	for (int i = 0; i < MemLen; i++)
-	result.pMem[i] = ~pMem[i];
+		result.pMem[i] = ~pMem[i];
 	return result;
 	*/
-	TBitField tmp(BitLen);
-	for (int i = 0; i < BitLen; i++)
-	{
-		if (GetBit(i) == 1) tmp.ClrBit(i);
-		else tmp.SetBit(i);
-	}
-	return tmp;
-
+		TBitField tmp(BitLen);
+		for (int i = 0; i < BitLen; i++)
+		{
+			if (GetBit(i) == 1) tmp.ClrBit(i);
+			else tmp.SetBit(i);
+		}
+		return tmp;
+		
 }
 
 // ввод/вывод
 
-istream &operator >> (istream &istr, TBitField &bf) // ввод
+istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
 	char c;
 	printf("__Input bietfield__\n");

@@ -111,7 +111,7 @@ TSet TSet::operator~(void) // дополнение
 
 // перегрузка ввода/вывода
 
-istream &operator >> (istream &istr, TSet &s) // ввод {s1,s2,s3}
+istream &operator>>(istream &istr, TSet &s) // ввод {s1,s2,s3}
 {
 	char c;
 	printf("__Input set\n");
