@@ -223,4 +223,3 @@ ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 	ostr << "end." << endl << endl;
 	return ostr;
 }
-
