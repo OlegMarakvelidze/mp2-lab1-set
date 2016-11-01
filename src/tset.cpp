@@ -135,3 +135,4 @@ ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 	ostr << "end." << endl << endl;
 	return ostr;
 }
+
